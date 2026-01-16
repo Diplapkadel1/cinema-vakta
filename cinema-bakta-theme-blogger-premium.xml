@@ -5,13 +5,13 @@
     <meta charset='UTF-8'/>
     <meta content='width=device-width,initial-scale=1' name='viewport'/>
     
-    <!-- SEO & OFFICIAL INDEXING ENGINE -->
+    <!-- ADVANCED SEO & RICH SNIPPETS -->
     <title><data:blog.pageTitle/></title>
     <b:include data='blog' name='all-head-content'/>
     <link expr:href='data:blog.canonicalUrl' rel='canonical'/>
     <meta expr:content='data:blog.metaDescription' name='description'/>
     
-    <!-- JSON-LD SCHEMA FOR INSTANT GOOGLE INDEXING -->
+    <!-- JSON-LD STRUCTURED DATA (Official Indexing) -->
     <script type='application/ld+json'>
     {
       "@context": "https://schema.org",
@@ -20,11 +20,11 @@
         "@type": "WebPage",
         "@id": "https://cinemabakta.blogspot.com/"
       },
-      "headline": "Cinema Vakta - Official Movie Reviews",
-      "image": "https://img.sanishtech.com/u/84f706267a09eda8b390c5190fa5e954.png",
+      "headline": "<data:blog.pageName/>",
+      "image": "<data:blog.postImageUrl/>",
       "author": {
         "@type": "Person",
-        "name": "Diplap Kadel &amp; Subash Samant"
+        "name": "Subash Samant &amp; Diplap Kadel"
       },
       "publisher": {
         "@type": "Organization",
@@ -37,117 +37,141 @@
     }
     </script>
 
-    <!-- BRAND COLORS & FONTS -->
-    <meta content='#1E90FF' name='theme-color'/>
+    <!-- FONTS: Montserrat (Cinematic) & Roboto (Readable) -->
     <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&amp;family=Roboto:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
 
     <b:skin><![CDATA[
     /*
     -----------------------------------------------
-    Theme: Cinema Vakta (Elite Official Build)
+    Theme: Cinema Vakta - Enterprise Production
     Devs: Subash Samant & Diplap kadel
-    Colors: Cinema Blue (#1E90FF) | Vakta Orange (#FF4500)
+    Exclusive Domain: cinemabakta.blogspot.com
     -----------------------------------------------
     */
     :root {
-        --cinema: #1E90FF;
-        --vakta: #FF4500;
-        --dark: #070708;
-        --surface: #121214;
+        --blue: #1E90FF;
+        --orange: #FF4500;
+        --dark-bg: #050506;
+        --surface: #111113;
         --card: #18181b;
         --text: #ffffff;
         --text-dim: #a1a1aa;
         --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    body { background: var(--dark); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding: 0; font-size: 16px; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; margin: 0; }
+    /* GLOBAL CSS RESET */
+    * { box-sizing: border-box; }
+    body { background: var(--dark-bg); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding: 0; font-size: 16px; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    img { max-width: 100%; height: auto; border: 0; vertical-align: middle; }
+    ul { list-style: none; padding: 0; margin: 0; }
 
-    /* HEADER */
-    header { background: #000; padding: 20px 0; border-bottom: 3px solid var(--cinema); position: relative; z-index: 100; }
-    .h-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-wrap: wrap; gap: 20px; }
-    .logo-main img { height: 55px; width: auto; display: block; }
-    
-    .s-box { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; width: 300px; padding: 2px 10px; }
-    .s-box input { background: none; border: none; color: #fff; padding: 10px; width: 100%; outline: none; font-size: 14px; }
-    .s-box button { background: none; border: none; color: var(--vakta); cursor: pointer; font-weight: 900; }
-
-    /* NAVIGATION - OFFICIAL BUTTONS */
-    nav { background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
-    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
-    nav li a { display: block; padding: 16px 15px; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; }
-    nav li a:hover { color: var(--cinema); }
-
-    .btn-download { background: var(--vakta); color: #fff !important; padding: 8px 18px !important; border-radius: 4px; margin-left: 10px; font-weight: 900 !important; box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3); }
-
-    /* TICKER */
-    .ticker { background: var(--vakta); color: #fff; height: 35px; overflow: hidden; display: flex; align-items: center; font-size: 13px; font-weight: 700; }
-    .ticker-lbl { background: #000; padding: 0 15px; height: 100%; display: flex; align-items: center; text-transform: uppercase; z-index: 5; }
-    .ticker-track { white-space: nowrap; animation: tickScroll 40s linear infinite; padding-left: 20px; }
+    /* TICKER - ABSOLUTE TOP */
+    .ticker { background: var(--orange); color: #fff; height: 38px; overflow: hidden; display: flex; align-items: center; font-size: 13px; font-weight: 700; position: relative; z-index: 1002; }
+    .ticker-lbl { background: #000; padding: 0 18px; height: 100%; display: flex; align-items: center; text-transform: uppercase; z-index: 5; box-shadow: 5px 0 15px rgba(0,0,0,0.3); }
+    .ticker-track { white-space: nowrap; animation: tickScroll 45s linear infinite; padding-left: 20px; }
     @keyframes tickScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    /* MAIN WRAPPER */
-    .wrapper { max-width: 1240px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; }
+    /* HEADER */
+    header { background: #000; padding: 25px 0; border-bottom: 3px solid var(--blue); position: relative; z-index: 1001; }
+    .h-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; flex-wrap: wrap; gap: 20px; }
+    .logo-box img { height: 55px; width: auto; display: block; filter: drop-shadow(0 0 10px rgba(30,144,255,0.2)); }
+    
+    /* SEARCH ENGINE */
+    .search-wrapper { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; width: 320px; padding: 2px 10px; transition: 0.3s; }
+    .search-wrapper:focus-within { border-color: var(--blue); box-shadow: 0 0 15px rgba(30,144,255,0.1); }
+    .search-wrapper input { background: none; border: none; color: #fff; padding: 12px; width: 100%; outline: none; font-size: 14px; }
+    .search-wrapper button { background: none; border: none; color: var(--orange); cursor: pointer; font-weight: 900; padding: 0 10px; }
 
-    /* AD SIZES */
-    .ad-slot { display: flex; align-items: center; justify-content: center; background: #0a0a0a; border: 1px solid var(--border); margin: 25px auto; overflow: hidden; }
+    /* NAVIGATION BAR */
+    nav { background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+    nav ul { display: flex; flex-wrap: wrap; }
+    nav li a { display: block; padding: 18px 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1.2px; }
+    nav li a:hover { color: var(--blue); }
+    
+    .btn-download-top { background: var(--orange); color: #fff !important; padding: 10px 20px !important; border-radius: 4px; font-weight: 900 !important; margin-left: 15px; box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4); }
+
+    /* WRAPPER STRUCTURE */
+    .wrapper { max-width: 1260px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 340px; gap: 40px; }
+
+    /* AD SLOTS */
+    .ad-slot { background: #080808; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 25px auto; overflow: hidden; border-radius: 8px; }
     .ad-728 { width: 728px; height: 90px; }
     .ad-300 { width: 300px; height: 250px; margin-bottom: 30px; }
     .ad-468 { width: 468px; height: 60px; }
 
-    /* HOMEPAGE GRID */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
-    .m-card { background: var(--card); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); position: relative; transition: 0.4s; }
-    .m-card:hover { transform: translateY(-10px); border-color: var(--cinema); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-    .m-poster { aspect-ratio: 2/3; position: relative; overflow: hidden; width: 100%; }
-    .m-poster img { width: 100%; height: 100%; object-fit: cover; }
-    .m-poster::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(transparent, var(--card) 98%); }
-    .m-details { padding: 20px; margin-top: -85px; position: relative; z-index: 5; }
-    .m-title { font-family: 'Montserrat'; font-size: 18px; color: #fff; margin-bottom: 12px; height: 46px; overflow: hidden; line-height: 1.3; }
-    .m-snip { font-size: 14px; color: var(--text-dim); height: 42px; overflow: hidden; margin-bottom: 18px; }
-    .m-btn { display: inline-block; background: var(--cinema); color: #fff; padding: 10px 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; border-radius: 4px; }
+    /* HOMEPAGE GRID (POSTER RATIO 2:3) */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
+    .movie-card { background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); position: relative; transition: 0.4s; }
+    .movie-card:hover { transform: translateY(-12px); border-color: var(--blue); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+    
+    .poster-box { aspect-ratio: 2/3; overflow: hidden; position: relative; width: 100%; }
+    .poster-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+    .movie-card:hover .poster-box img { transform: scale(1.1); }
+    .poster-box::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(transparent, var(--card) 98%); }
 
-    /* POST CONTENT */
-    .post-view { background: var(--surface); padding: 45px; border-radius: 12px; border: 1px solid var(--border); }
-    .post-view h1 { font-family: 'Montserrat'; font-size: 36px; color: var(--cinema); margin-bottom: 15px; }
-    .post-author { font-size: 12px; text-transform: uppercase; color: var(--vakta); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 35px; display: block; }
-    .post-content { font-size: 19px; line-height: 1.9; color: #ececec; }
-    .post-content img { border-radius: 8px; margin: 30px 0; max-width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .movie-info { padding: 25px; margin-top: -95px; position: relative; z-index: 5; }
+    .movie-title { font-family: 'Montserrat'; font-size: 19px; color: #fff; margin-bottom: 12px; height: 48px; overflow: hidden; line-height: 1.3; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    .movie-snip { font-size: 14px; color: var(--text-dim); height: 42px; overflow: hidden; margin-bottom: 20px; line-height: 1.5; }
+    .btn-review { display: inline-block; background: var(--blue); color: #fff; padding: 10px 22px; font-size: 11px; font-weight: 800; text-transform: uppercase; border-radius: 4px; letter-spacing: 1px; }
 
-    /* SIDEBAR POPULAR POSTS (MODIFIED: TITLE + DESCRIPTION + POSTER) */
-    .widget { margin-bottom: 40px; }
-    .widget h2 { font-family: 'Montserrat'; font-size: 16px; color: var(--cinema); border-left: 4px solid var(--vakta); padding-left: 15px; margin-bottom: 25px; text-transform: uppercase; }
+    /* SINGLE POST REVIEW DESIGN */
+    .post-view-box { background: var(--surface); padding: 50px; border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .post-header h1 { font-family: 'Montserrat'; font-size: 40px; color: var(--blue); line-height: 1.2; margin-bottom: 15px; }
+    .post-meta-top { font-size: 12px; text-transform: uppercase; color: var(--orange); font-weight: 700; letter-spacing: 1.2px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 40px; display: block; }
+    
+    .post-content { font-size: 19px; line-height: 1.9; color: #e5e7eb; }
+    .post-content img { border-radius: 12px; margin: 35px 0; max-width: 100%; box-shadow: 0 15px 45px rgba(0,0,0,0.6); }
+    .post-content blockquote { background: rgba(30, 144, 255, 0.05); border-left: 5px solid var(--blue); padding: 30px 40px; font-style: italic; margin: 40px 0; border-radius: 0 10px 10px 0; }
+
+    /* SIDEBAR POPULAR POSTS */
+    .widget { margin-bottom: 45px; }
+    .widget h2 { font-family: 'Montserrat'; font-size: 17px; color: var(--blue); border-left: 4px solid var(--orange); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.2px; }
     
     .popular-posts ul { list-style: none; padding: 0; }
-    .popular-posts li { display: flex; gap: 15px; margin-bottom: 22px; border-bottom: 1px solid var(--border); padding-bottom: 18px; align-items: flex-start; }
-    .popular-posts img { width: 85px; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
-    .popular-info { display: flex; flex-direction: column; gap: 5px; }
-    .pop-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; margin: 0; }
-    .pop-snippet { font-size: 12px; color: var(--text-dim); line-height: 1.4; height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .popular-posts li { display: flex; gap: 18px; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 20px; align-items: flex-start; }
+    .popular-posts img { width: 90px; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    .popular-details { display: flex; flex-direction: column; gap: 6px; }
+    .pop-title { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.4; margin: 0; }
+    .pop-snip { font-size: 12px; color: var(--text-dim); height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-    /* YOUTUBE WIDGET */
-    .yt-promo { background: #000; border: 1px solid var(--cinema); padding: 15px; border-radius: 10px; margin-top: 20px; }
-    .yt-promo iframe { width: 100%; height: 180px; border-radius: 6px; border: none; }
+    /* YOUTUBE WIDGET (SIDEBAR) */
+    .youtube-promo { background: #000; border: 1px solid var(--blue); padding: 18px; border-radius: 12px; margin-top: 25px; }
+    .youtube-promo iframe { width: 100%; height: 185px; border-radius: 8px; border: none; }
 
     /* FOOTER */
-    footer { background: #000; padding: 80px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px; }
-    .f-logo img { height: 45px; margin-bottom: 25px; }
-    .credits { font-size: 12px; color: #444; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; line-height: 2; }
-    .credits b { color: var(--cinema); }
+    footer { background: #000; padding: 100px 20px; text-align: center; border-top: 1px solid var(--border); margin-top: 100px; }
+    .footer-logo img { height: 50px; margin-bottom: 35px; }
+    .f-socials { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
+    .f-socials a { font-size: 13px; color: var(--blue); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    .f-socials a:hover { color: var(--orange); }
+    .credits { font-size: 13px; color: #555; margin-top: 50px; border-top: 1px solid var(--border); padding-top: 40px; line-height: 2.2; letter-spacing: 0.8px; }
+    .credits b { color: var(--blue); }
 
-    /* LAYOUT EDITOR FIX */
-    body#layout .wrapper { display: block; padding: 20px; }
-    body#layout .ad-slot { height: 40px; border: 1px dashed #555; }
+    /* BLOGGER LAYOUT TOOL FIX */
+    body#layout .wrapper { display: block; }
+    body#layout .ad-slot { height: 50px; border: 1px dashed #555; }
+    body#layout nav { position: static; backdrop-filter: none; }
+
+    @media (max-width: 900px) {
+        .wrapper { grid-template-columns: 1fr; }
+        .ad-728, .ad-468 { width: 100%; height: auto; }
+        .post-view-box { padding: 30px 20px; }
+        .post-header h1 { font-size: 30px; }
+        .search-wrapper { width: 100%; }
+        .h-inner { justify-content: center; }
+    }
     ]]></b:skin>
 
+    <!-- DOMAIN PROTECTION (Hardcoded) -->
     <script type='text/javascript'>
     //<![CDATA[
     (function() {
-        var a = "cinemabakta.blogspot.com";
-        var b = window.location.hostname;
-        if (b !== a && b !== "www." + a && !b.includes("blogger.com")) {
+        var x = "cinemabakta.blogspot.com";
+        var y = window.location.hostname;
+        if (y !== x && y !== "www." + x && !y.includes("blogger.com")) {
             window.onload = function() {
                 document.body.innerHTML = '<iframe src="https://diplapkadel1.github.io/ow/protect.html" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:999999;"></iframe>';
                 document.body.style.overflow = "hidden";
@@ -159,22 +183,36 @@
 </head>
 <body>
 
+    <!-- 1. TICKER: Top Updates -->
+    <div class='ticker'>
+        <div class='ticker-lbl'>Trending</div>
+        <div class='ticker-track'>
+            <b:section id='ticker-news' name='Ticker Content' showaddelement='yes'>
+                <b:widget id='HTML1' locked='false' title='Ticker Text' type='HTML'>
+                    <b:widget-settings>
+                        <b:widget-setting name='content'>Cinema Vakta Enterprise: Unbiased Movie Reviews by Subash Samant &amp; Diplap Kadel. Subscribe on YouTube for trailers!</b:widget-setting>
+                    </b:widget-settings>
+                </b:widget>
+            </b:section>
+        </div>
+    </div>
+
+    <!-- 2. HEADER: Branding & Search -->
     <header>
         <div class='h-inner'>
-            <div class='logo-main'>
+            <div class='logo-box'>
                 <a expr:href='data:blog.homepageUrl'>
                     <img alt='Cinema Vakta' src='https://img.sanishtech.com/u/84f706267a09eda8b390c5190fa5e954.png'/>
                 </a>
             </div>
-            <!-- Standard Search Form -->
-            <form action='/search' class='s-box' method='get'>
-                <input name='q' placeholder='Search movies...' type='text'/>
+            <form action='/search' class='search-wrapper' method='get'>
+                <input name='q' placeholder='Search reviews, trailers...' type='text'/>
                 <button type='submit'>GO</button>
             </form>
         </div>
     </header>
 
-    <!-- Professional Nav with Social and Download Buttons -->
+    <!-- 3. NAVIGATION: Multi-Channel Menu -->
     <nav>
         <div class='nav-inner'>
             <b:section id='nav-links' name='Menu Navigation' showaddelement='yes'>
@@ -185,81 +223,77 @@
                             <b:loop values='data:links' var='link'>
                                 <li><a expr:href='data:link.target'><data:link.name/></a></li>
                             </b:loop>
-                            <li><a href='https://www.facebook.com/diplap.kadel' rel='noopener' target='_blank'>Diplap FB</a></li>
-                            <li><a href='https://www.facebook.com/profile.php?id=61582988995307' rel='noopener' target='_blank'>Subash FB</a></li>
                             <li><a href='https://www.youtube.com/@Cinema-vakta' rel='noopener' target='_blank'>YouTube</a></li>
                         </ul>
                     </b:includable>
                 </b:widget>
             </b:section>
-            <!-- Hardcoded Download Button to ensure it is always visible at the top -->
-            <a class='btn-download' href='https://github.com/diplapkadel1/cinema-vakta' rel='noopener' target='_blank'>DOWNLOAD THEME</a>
+            <!-- Hardcoded Official Buttons -->
+            <a class='btn-download-top' href='https://github.com/diplapkadel1/cinema-vakta' rel='noopener' target='_blank'>DOWNLOAD THEME</a>
         </div>
     </nav>
 
-    <div class='ticker'>
-        <div class='ticker-lbl'>Trending</div>
-        <div class='ticker-track'>
-            <b:section id='ticker-news' name='Ticker News' showaddelement='yes'>
-                <b:widget id='HTML1' locked='false' title='Ticker Content' type='HTML'>
-                    <b:widget-settings>
-                        <b:widget-setting name='content'>Official Reviews by Diplap Kadel &amp; Subash Samant. Watch us on YouTube for daily breakdowns!</b:widget-setting>
-                    </b:widget-settings>
-                </b:widget>
-            </b:section>
-        </div>
-    </div>
-
-    <!-- Ad: Top (728x90) -->
+    <!-- 4. AD: Top Leaderboard -->
     <div class='ad-slot ad-728'>
         <b:section id='ad-header' name='Ad: Top Leaderboard (728x90)' showaddelement='yes'/>
     </div>
 
+    <!-- 5. MAIN CONTENT Wrapper -->
     <div class='wrapper'>
         <main>
             <b:if cond='data:view.isError'>
-                <div style='text-align:center; padding:100px 0;'>
-                    <h1 style='color:var(--vakta); font-size:80px;'>404</h1>
-                    <p>SCENE CUT FROM THE FINAL EDIT.</p>
-                    <a expr:href='data:blog.homepageUrl' class='m-btn'>Go Home</a>
+                <div style='text-align:center; padding:150px 20px;'>
+                    <h1 style='color:var(--orange); font-size:120px;'>404</h1>
+                    <p style='font-size:22px;'>SCENE REMOVED FROM THE FINAL EDIT.</p>
+                    <a expr:href='data:blog.homepageUrl' class='btn-review'>Return Home</a>
                 </div>
             <b:else/>
 
+                <!-- Blog Engine -->
                 <b:section id='main-feed' name='Main Feed' showaddelement='no'>
                     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
                         <b:includable id='main'>
-                            <!-- Homepage Grid View -->
+                            
+                            <!-- HOMEPAGE: 2:3 POSTER GRID -->
                             <b:if cond='data:view.isMultipleItems'>
                                 <div class='grid'>
                                     <b:loop values='data:posts' var='post'>
-                                        <article class='m-card'>
+                                        <article class='movie-card'>
                                             <a expr:href='data:post.url'>
-                                                <div class='m-poster'>
-                                                    <img expr:src='data:post.featuredImage ?: &quot;https://placehold.co/400x600/111/fff?text=Poster&quot;'/>
+                                                <div class='poster-box'>
+                                                    <img expr:src='data:post.featuredImage ?: &quot;https://placehold.co/400x600/111/fff?text=Cinema+Vakta&quot;'/>
                                                 </div>
-                                                <div class='details'>
-                                                    <h2 class='m-title'><data:post.title/></h2>
-                                                    <div class='m-snip'>
-                                                        <b:eval expr='snippet(data:post.body, {length: 110, linebreaks: false, links: false})' />
+                                                <div class='movie-info'>
+                                                    <h2 class='movie-title'><data:post.title/></h2>
+                                                    <div class='movie-snip'>
+                                                        <b:eval expr='snippet(data:post.body, {length: 120, linebreaks: false, links: false})' />
                                                     </div>
-                                                    <span class='m-btn'>Full Review</span>
+                                                    <span class='btn-review'>Full Review</span>
                                                 </div>
                                             </a>
                                         </article>
                                     </b:loop>
                                 </div>
-                            <!-- Single Post View -->
+                            
+                            <!-- SINGLE POST: Cinematic Reader -->
                             <b:else/>
                                 <b:loop values='data:posts' var='post'>
-                                    <article class='post-view'>
-                                        <h1><data:post.title/></h1>
-                                        <span class='post-author'>Review by <b><data:post.author.name/></b> | <data:post.date/></span>
+                                    <article class='post-view-box'>
+                                        <div class='post-header'>
+                                            <h1><data:post.title/></h1>
+                                            <span class='post-meta-top'>Review by <b><data:post.author.name/></b> | <data:post.date/></span>
+                                        </div>
+
+                                        <!-- Mid Ad Slot -->
                                         <div class='ad-slot ad-468'>
                                             <b:section id='ad-mid-post' name='Ad: Post Mid (468x60)' showaddelement='yes'/>
                                         </div>
+
                                         <div class='post-content'>
                                             <data:post.body/>
                                         </div>
+                                        
+                                        <!-- Comments Integration -->
                                         <b:include data='post' name='comment_pickle'/>
                                     </article>
                                 </b:loop>
@@ -271,14 +305,17 @@
         </main>
 
         <aside>
+            <!-- Sidebar Ad Slot -->
             <div class='ad-slot ad-300'>
-                <b:section id='ad-sidebar' name='Ad: Sidebar (300x250)' showaddelement='yes'/>
+                <b:section id='ad-side' name='Ad: Sidebar (300x250)' showaddelement='yes'/>
             </div>
+
+            <!-- Standard Sidebar Widgets -->
             <b:section id='sidebar-area' name='Sidebar Widgets' showaddelement='yes'>
                 <b:widget id='PopularPosts1' locked='false' title='Trending Reviews' type='PopularPosts'>
                     <b:includable id='main'>
                         <div class='widget popular-posts'>
-                            <h2><data:title/></h2>
+                            <h2>Trending Reviews</h2>
                             <ul>
                                 <b:loop values='data:posts' var='post'>
                                     <li>
@@ -287,9 +324,9 @@
                                         <b:else/>
                                             <img src='https://placehold.co/400x600/111/fff?text=Poster'/>
                                         </b:if>
-                                        <div class='popular-info'>
+                                        <div class='popular-details'>
                                             <h3 class='pop-title'><a expr:href='data:post.url'><data:post.title/></a></h3>
-                                            <div class='pop-snippet'><data:post.snippet/></div>
+                                            <div class='pop-snip'><data:post.snippet/></div>
                                         </div>
                                     </li>
                                 </b:loop>
@@ -297,8 +334,12 @@
                         </div>
                     </b:includable>
                 </b:widget>
+                <b:widget id='Label1' locked='false' title='Categories' type='Label'/>
+                <b:widget id='ContactForm1' locked='false' title='Feedback' type='ContactForm'/>
             </b:section>
-            <div class='widget yt-promo'>
+
+            <!-- YouTube Bottom-Right Promo -->
+            <div class='widget youtube-promo'>
                 <h2>Official Promo</h2>
                 <b:section id='youtube-box' name='YouTube Sidebar Section' showaddelement='yes'>
                     <b:widget id='HTML105' locked='false' title='YouTube Embed' type='HTML'/>
@@ -307,17 +348,26 @@
         </aside>
     </div>
 
+    <!-- 6. FOOTER: Final Indexing & Credits -->
     <footer>
-        <div class='f-logo'>
-            <img alt='Cinema Vakta' src='https://img.sanishtech.com/u/84f706267a09eda8b390c5190fa5e954.png'/>
+        <div class='footer-logo'>
+            <img alt='Cinema Vakta Logo' src='https://img.sanishtech.com/u/84f706267a09eda8b390c5190fa5e954.png'/>
         </div>
+        
+        <div class='f-socials'>
+            <a href='https://www.facebook.com/diplap.kadel' rel='noopener' target='_blank'>Diplap Facebook</a>
+            <a href='https://www.facebook.com/profile.php?id=61582988995307' rel='noopener' target='_blank'>Subash Facebook</a>
+            <a href='https://www.youtube.com/@Cinema-vakta' rel='noopener' target='_blank'>Official YouTube</a>
+        </div>
+
         <b:section id='footer-links' name='Footer Menu' showaddelement='yes'>
             <b:widget id='LinkList2' locked='false' title='Footer links' type='LinkList'/>
         </b:section>
+
         <div class='credits'>
-            COPYRIGHT © <script>document.write(new Date().getFullYear())</script> <b>CINEMA VAKTA</b>. ALL RIGHTS RESERVED.<br/>
-            MANAGED BY <b>DIPLAP KADEL</b> &amp; <b>SUBASH SAMANT</b><br/>
-            OFFICIAL PARTNER: <a href='https://www.youtube.com/@Cinema-vakta' rel='noopener' style='color:var(--cinema); font-weight:800;' target='_blank'>YOUTUBE CHANNEL</a>
+            COPYRIGHT © <script>document.write(new Date().getFullYear())</script> <b>CINEMA VAKTA ENTERPRISE</b>. ALL RIGHTS RESERVED.<br/>
+            OFFICIALLY DEVELOPED &amp; MANAGED BY <b>SUBASH SAMANT</b> &amp; <b>DIPLAP KADEL</b><br/>
+            JOIN THE MOVIE REVOLUTION ON <a href='https://www.youtube.com/@Cinema-vakta' rel='noopener' style='color:var(--blue); font-weight:800;' target='_blank'>OUR CHANNEL</a>
         </div>
     </footer>
 
