@@ -18,8 +18,9 @@
     <b:skin><![CDATA[
     /*
     -----------------------------------------------
-    Theme: Cinema Vakta (Stable Final Build)
+    Theme: Cinema Vakta - Official Build
     Devs: Subash Samant & Diplap kadel
+    Colors: Cinema (#1E90FF) | Vakta (#FF4500)
     -----------------------------------------------
     */
     :root {
@@ -51,7 +52,6 @@
     nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; }
     nav li a { display: block; padding: 16px 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1.5px; }
     nav li a:hover { color: var(--cinema); }
-    nav li a.active-link { color: var(--vakta); border-bottom: 2px solid var(--vakta); }
 
     /* TICKER */
     .ticker { background: var(--vakta); color: #fff; height: 35px; overflow: hidden; display: flex; align-items: center; font-size: 13px; font-weight: 700; }
@@ -68,15 +68,13 @@
     .ad-300 { width: 300px; height: 250px; margin-bottom: 30px; }
     .ad-468 { width: 468px; height: 60px; }
 
-    /* HOMEPAGE GRID (POSTER RATIO) */
+    /* HOMEPAGE GRID */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
     .m-card { background: var(--card); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); position: relative; transition: 0.4s; }
     .m-card:hover { transform: translateY(-10px); border-color: var(--cinema); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
-    
     .m-poster { aspect-ratio: 2/3; position: relative; overflow: hidden; width: 100%; }
     .m-poster img { width: 100%; height: 100%; object-fit: cover; }
     .m-poster::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(transparent, var(--card) 98%); }
-
     .m-details { padding: 20px; margin-top: -85px; position: relative; z-index: 5; }
     .m-title { font-family: 'Montserrat'; font-size: 18px; color: #fff; margin-bottom: 12px; height: 46px; overflow: hidden; line-height: 1.3; }
     .m-snip { font-size: 14px; color: var(--text-dim); height: 42px; overflow: hidden; margin-bottom: 18px; }
@@ -88,16 +86,19 @@
     .post-author { font-size: 12px; text-transform: uppercase; color: var(--vakta); font-weight: 700; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 35px; display: block; }
     .post-content { font-size: 19px; line-height: 1.9; color: #ececec; }
     .post-content img { border-radius: 8px; margin: 30px 0; max-width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .post-content blockquote { background: rgba(30, 144, 255, 0.05); border-left: 5px solid var(--cinema); padding: 25px 35px; font-style: italic; border-radius: 0 8px 8px 0; }
 
-    /* SIDEBAR */
+    /* SIDEBAR POPULAR POSTS (MODIFIED: TITLE + DESCRIPTION + POSTER) */
     .widget { margin-bottom: 40px; }
     .widget h2 { font-family: 'Montserrat'; font-size: 16px; color: var(--cinema); border-left: 4px solid var(--vakta); padding-left: 15px; margin-bottom: 25px; text-transform: uppercase; }
-    .popular-posts li { display: flex; gap: 15px; margin-bottom: 22px; border-bottom: 1px solid var(--border); padding-bottom: 18px; }
-    .popular-posts img { width: 90px; height: 125px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-    .item-title { font-size: 14px; font-weight: 600; color: #fff; }
+    
+    .popular-posts ul { list-style: none; padding: 0; }
+    .popular-posts li { display: flex; gap: 15px; margin-bottom: 22px; border-bottom: 1px solid var(--border); padding-bottom: 18px; align-items: flex-start; }
+    .popular-posts img { width: 85px; aspect-ratio: 2/3; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+    .popular-info { display: flex; flex-direction: column; gap: 5px; }
+    .pop-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.3; margin: 0; }
+    .pop-snippet { font-size: 12px; color: var(--text-dim); line-height: 1.4; height: 34px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-    /* YOUTUBE WIDGET (SIDEBAR) */
+    /* YOUTUBE WIDGET */
     .yt-promo { background: #000; border: 1px solid var(--cinema); padding: 15px; border-radius: 10px; margin-top: 20px; }
     .yt-promo iframe { width: 100%; height: 180px; border-radius: 6px; border: none; }
 
@@ -108,7 +109,7 @@
     .credits { font-size: 12px; color: #444; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px; line-height: 2; }
     .credits b { color: var(--cinema); }
 
-    /* EDITOR FIX */
+    /* LAYOUT EDITOR FIX */
     body#layout .wrapper { display: block; padding: 20px; }
     body#layout .ad-slot { height: 40px; border: 1px dashed #555; }
     ]]></b:skin>
@@ -116,7 +117,7 @@
     <script type='text/javascript'>
     //<![CDATA[
     (function() {
-        var a = "cinemavakta.blogspot.com";
+        var a = "cinemabakta.blogspot.com";
         var b = window.location.hostname;
         if (b !== a && b !== "www." + a && !b.includes("blogger.com")) {
             window.onload = function() {
@@ -152,7 +153,7 @@
                         <b:loop values='data:links' var='link'>
                             <li><a expr:href='data:link.target'><data:link.name/></a></li>
                         </b:loop>
-                        <li><a class='active-link' href='https://github.com/diplapkadel1/cinema-vakta' rel='noopener' target='_blank'>Download</a></li>
+                        <li><a href='https://github.com/diplapkadel1/cinema-vakta' rel='noopener' style='color:var(--vakta)' target='_blank'>DOWNLOAD THEME</a></li>
                     </ul>
                 </b:includable>
             </b:widget>
@@ -160,12 +161,12 @@
     </nav>
 
     <div class='ticker'>
-        <div class='ticker-lbl'>Trending</div>
+        <div class='ticker-lbl'>Updates</div>
         <div class='ticker-track'>
             <b:section id='ticker-news' name='Ticker News' showaddelement='yes'>
                 <b:widget id='HTML1' locked='false' title='Ticker Content' type='HTML'>
                     <b:widget-settings>
-                        <b:widget-setting name='content'>Official Reviews by Subash Samant &amp; Diplap Kadel. Subscribe to Cinema Vakta on YouTube!</b:widget-setting>
+                        <b:widget-setting name='content'>Official Reviews by Subash Samant &amp; Diplap Kadel. Watch us on YouTube for daily breakdowns!</b:widget-setting>
                     </b:widget-settings>
                 </b:widget>
             </b:section>
@@ -191,7 +192,7 @@
                     <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
                         <b:includable id='main'>
                             
-                            <!-- Grid View -->
+                            <!-- Homepage Grid View -->
                             <b:if cond='data:view.isMultipleItems'>
                                 <div class='grid'>
                                     <b:loop values='data:posts' var='post'>
@@ -219,7 +220,7 @@
                                         <h1><data:post.title/></h1>
                                         <span class='post-author'>Review by <b><data:post.author.name/></b> | <data:post.date/></span>
                                         
-                                        <!-- Mid Ad (468x60) -->
+                                        <!-- Mid-Post Ad Slot -->
                                         <div class='ad-slot ad-468'>
                                             <b:section id='ad-mid-post' name='Ad: Post Mid (468x60)' showaddelement='yes'/>
                                         </div>
@@ -245,14 +246,36 @@
             </div>
 
             <b:section id='sidebar-area' name='Sidebar Widgets' showaddelement='yes'>
-                <b:widget id='PopularPosts1' locked='false' title='Trending Reviews' type='PopularPosts'/>
+                <!-- Standard Popular Posts customized to show Snippets + Vertical Posters -->
+                <b:widget id='PopularPosts1' locked='false' title='Trending Reviews' type='PopularPosts'>
+                    <b:includable id='main'>
+                        <div class='widget popular-posts'>
+                            <h2><data:title/></h2>
+                            <ul>
+                                <b:loop values='data:posts' var='post'>
+                                    <li>
+                                        <b:if cond='data:post.featuredImage'>
+                                            <img expr:src='data:post.featuredImage'/>
+                                        <b:else/>
+                                            <img src='https://placehold.co/400x600/111/fff?text=Poster'/>
+                                        </b:if>
+                                        <div class='popular-info'>
+                                            <h3 class='pop-title'><a expr:href='data:post.url'><data:post.title/></a></h3>
+                                            <div class='pop-snippet'><data:post.snippet/></div>
+                                        </div>
+                                    </li>
+                                </b:loop>
+                            </ul>
+                        </div>
+                    </b:includable>
+                </b:widget>
                 <b:widget id='Label1' locked='false' title='Genres' type='Label'/>
             </b:section>
 
-            <!-- YouTube Sidebar -->
+            <!-- YouTube Bottom Right Section -->
             <div class='widget yt-promo'>
-                <h2>Official Video</h2>
-                <b:section id='youtube-box' name='Sidebar YouTube Section' showaddelement='yes'>
+                <h2>Official Promo</h2>
+                <b:section id='youtube-box' name='YouTube Sidebar Section' showaddelement='yes'>
                     <b:widget id='HTML105' locked='false' title='YouTube Embed' type='HTML'/>
                 </b:section>
             </div>
@@ -260,7 +283,7 @@
     </div>
 
     <footer>
-        <img alt='Cinema Vakta' src='https://img.sanishtech.com/u/20bd7ec427197a91da41a604c2571d52.png' style='height:40px;'/>
+        <img alt='Cinema Vakta Logo' src='https://img.sanishtech.com/u/20bd7ec427197a91da41a604c2571d52.png' style='height:42px;'/>
         
         <div class='f-socials'>
             <a href='https://www.facebook.com/diplap.kadel' rel='noopener' target='_blank'>Diplap Facebook</a>
